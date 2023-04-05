@@ -48,7 +48,7 @@ public class JunitTest {
     public void testExplodeWithoutMineralAndBACKWARD() {
         // 测试有炸弹和钩子上没有物品的情况，且钩子正在上升
         stage.hook.mineral= null;
-        stage.hook.state = BACKWARD;
+        stage.hook.setState(BACKWARD);
         bomb.explode();
         assertEquals(40000.0 / stage.hook.weight, stage.hook.getPullVelocity(),0.000001);
         assertEquals(0, stage.bombList.size());
@@ -65,7 +65,7 @@ public class JunitTest {
     @Test
     public void testExplodeWhileFORWARD() {
         // 测试钩子正在下降的情况
-        stage.hook.state = FORWARD;
+        stage.hook.setState(FORWARD);
         bomb.explode();
         assertEquals(1, stage.bombList.size());
     }
@@ -79,10 +79,11 @@ public class JunitTest {
     @Test
     public void testHookMinerals() {
         // 测试钩子上有物品时速度
-        stage.hook.state = FORWARD;
+        stage.hook.setState(FORWARD);
+
         for(int i = 0;i < stage.mineralList.size();i++) {
             stage.hook.mineral = stage.mineralList.get(i);
-            assertEquals(40000.0 / (stage.hook.weight+stage.hook.mineral.density * stage.hook.mineral.r * stage.hook.mineral.r), stage.hook.getPullVelocity(),0.000001);
+            assertEquals(40000.0 / (stage.hook.weight+stage.hook.mineral.density * stage.hook.mineral.r* stage.hook.mineral.r), stage.hook.getPullVelocity(),0.000001);
         }
     }
 
