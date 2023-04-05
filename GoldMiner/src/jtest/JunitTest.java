@@ -6,6 +6,7 @@ import org.junit.Test;
 
 
 import java.io.IOException;
+import java.util.Timer;
 
 import static minegame.Hook.HookState.BACKWARD;
 import static minegame.Hook.HookState.FORWARD;
@@ -25,6 +26,7 @@ public class JunitTest {
         // 初始化炸弹和场景
         stage = new Stage();
         stage.order = 1;
+        stage.timer = new Timer();
         Hook hook = new Hook(0, 0);
         stage.load(1);
         stage.hook.mineral= stage.mineralList.get(1);
