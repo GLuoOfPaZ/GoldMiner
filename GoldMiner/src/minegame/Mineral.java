@@ -13,9 +13,9 @@ import javax.swing.ImageIcon;
 public abstract class Mineral {
     double x;
     double y;
-    double r;
+    public double r;
     int value;
-    int density;
+    public int density;
     Mineral(double x,double y,double r,int value,int density){
     	this.x=x;
     	this.y=y;

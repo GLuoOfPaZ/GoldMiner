@@ -23,13 +23,17 @@ public class Hook {
     private double theta=0.0; //角度
     private double d=0.0; //绳长
     final double r = 30.0; //钩子大小
-    private double weight=800.0; //钩子本身的重量
+    public double weight=800.0; //钩子本身的重量
 
-    private Mineral mineral;//钩到的物体
+    public Mineral mineral;//钩到的物体
     
 
     HookState state; //钩子的行进状态
-    enum HookState{WAIT, FORWARD, BACKWARD}
+
+    public void setState(HookState backward) {
+    }
+
+    public enum HookState{WAIT, FORWARD, BACKWARD}
     
     int hookWaitDirection = 1; //控制钩子晃动的方向
 
@@ -55,14 +59,14 @@ public class Hook {
 
     /*分别计算拉的速度和放的速度（放的速度偏慢，不能用钩子的重量来算）*/
     /*TODO 计算速度的参数可以调整*/
-    double getPullVelocity(){
+    public double getPullVelocity(){
     	return 40000.0 / getWeight();
     }    
     double getPushVelocity(){
     	return 20.0;
     }
     
-    boolean hasMineral() {
+    public boolean hasMineral() {
     	return mineral != null;
     }
 

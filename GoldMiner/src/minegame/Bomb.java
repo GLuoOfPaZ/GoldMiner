@@ -11,7 +11,7 @@ import javax.swing.ImageIcon;
  * Created by czj
  */
 
-class Bomb {
+public class Bomb {
 	double x;
 	double y;
 	double r;
@@ -19,7 +19,7 @@ class Bomb {
 	List<Bomb> chainReaction = new ArrayList<Bomb>();
 	boolean marked2Explode;
 	
-	Bomb(double x, double y, double r, Stage stage) {
+	public Bomb(double x, double y, double r, Stage stage) {
 		this.x = x;
 		this.y = y;
 		this.r = r;
@@ -32,7 +32,7 @@ class Bomb {
 		g.drawImage(icon, (int)(x-r), (int)(y-r), 
 				(int)(2*r), (int)(2*r), null);
 	}
-	void explode() {
+	public void explode() {
 		for (int i = 0, len = stage.mineralList.size(); i < len; ++i) {
 			if (distance(stage.mineralList.get(i).x, 
 					stage.mineralList.get(i).y, x, y) < 5 * r) {

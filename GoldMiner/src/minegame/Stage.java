@@ -25,32 +25,32 @@ public class Stage extends JPanel {
     double width = 800;
     double height = 600;
 
-    int order;//关数
+    public int order;//关数
     final int totalOrder = 5;
 
     /*关卡生成加载的变量*/
     int lifetime;
     int totaltime;
-    int requireScore;
-    List<Mineral> mineralList = new ArrayList<Mineral>();
-    List<Bomb> bombList = new ArrayList<Bomb>();
+    public int requireScore;
+    public List<Mineral> mineralList = new ArrayList<Mineral>();
+    public List<Bomb> bombList = new ArrayList<Bomb>();
 
-    enum StageState {MENU, PLAYING, CONFIGURE, PAUSE, GAME_OVER}
+    public enum StageState {MENU, PLAYING, CONFIGURE, PAUSE, GAME_OVER}
 
-    StageState stageState;
+    public StageState stageState;
 
-    int score;
+    public int score;
     
     List<ExplodeEffect> explodeEffectList = new ArrayList<ExplodeEffect>();
 
-    Hook hook = new Hook(width, 180);
-    Timer timer;
+    public Hook hook = new Hook(width, 180);
+    public Timer timer;
     
     //播放倒计时音效线程的target
     SoundPlayer playLastSoundThreadTarget=new SoundPlayer("res/sounds/last-10s-sound.wav"); 
 
     /*Updated by Yangan*/
-    void load(int order) throws IOException {
+    public void load(int order) throws IOException {
     	int minercount=0;
         this.order = order;
         mineralList.clear();
@@ -152,7 +152,7 @@ public class Stage extends JPanel {
     }
 
     /*下一关*/
-    void next() throws IOException{ 
+    public void next() throws IOException{
         if(lifetime>0&&lifetime<=100){
         	playLastSoundThreadTarget.canplay=false;
         } //如果在倒计时10秒内gameover或者过关应该停掉音乐
