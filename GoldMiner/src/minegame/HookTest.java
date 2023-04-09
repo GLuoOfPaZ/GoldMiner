@@ -46,7 +46,7 @@ public class HookTest {
     }
 
     @Test
-    public void testScoreAdd() throws IOException {
+    public void testHookMineralScoreAdd() throws IOException {
         Hook hook = new Hook(0, 0);
         hook.launch();
         Mineral mineral = new Gold(0, 0, 10, 500);
@@ -54,5 +54,25 @@ public class HookTest {
         Stage stage = new Stage();
         hook.refresh(stage);
         assertEquals(stage.score, 500);
+    }
+
+    @Test
+    public void testHookBombScoreAdd() throws IOException {
+        Hook hook = new Hook(0, 0);
+        hook.launch();
+        Stage stage = new Stage();
+        Bomb bomb = new Bomb(0, 0, 10, new Stage());
+        hook.explodeBomb(bomb);
+        hook.refresh(stage);
+        assertEquals(stage.score, 0);
+    }
+
+    @Test
+    public void testHookGoBackAtBorder() throws IOException {
+        Hook hook = new Hook(0, 0);
+        hook.launch();
+        Stage stage = new Stage();
+        hook.refresh(stage);
+        assertEquals(hook.state, Hook.HookState.BACKWARD);
     }
 }
